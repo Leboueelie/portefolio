@@ -14,12 +14,14 @@ export default function Contact() {
     setErr("");
     setLoading(true);
 
-    // Récupération des données du formulaire
     const formData = new FormData(form.current);
     const templateParams = {
       from_name: formData.get("user_name"),
       user_email: formData.get("user_email"),
       message: formData.get("message"),
+      // reply_to est automatiquement géré par EmailJS si configuré dans le template,
+      // mais on peut aussi le forcer ici :
+      // reply_to: formData.get('user_email'),
     };
 
     emailjs
@@ -27,20 +29,17 @@ export default function Contact() {
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         templateParams,
-        {
-          publicKey: import.meta.env.VITE_EMAILJS_USER_ID,
-        },
+        { publicKey: import.meta.env.VITE_EMAILJS_USER_ID },
       )
       .then(() => {
         setSent(true);
         form.current.reset();
-        setLoading(false);
       })
       .catch((error) => {
         setErr("L'envoi a échoué. Veuillez réessayer.");
         console.error("Erreur EmailJS :", error);
-        setLoading(false);
-      });
+      })
+      .finally(() => setLoading(false));
   };
 
   return (
