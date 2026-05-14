@@ -142,8 +142,8 @@ export const projects = [
       "react-pdf",
     ],
     image: "/projects/portfolio-lbt.png",
-    github: "https://github.com/tonuser/portfolio-lbt",
-    demo: "https://tonportfolio.vercel.app",
+    github: "https://github.com/Leboueelie/portefolio",
+    demo: "https://portefolio-neon-gamma.vercel.app/",
     date: "2026",
   },
 ];
