@@ -110,7 +110,7 @@ export default function Contact() {
 
         <div className="flex justify-center gap-6 mt-8">
           <a
-            href="https://linkedin.com/in/leboue-elie"
+            href="https://www.linkedin.com/in/elie-leboue-0658b0294/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-white/70 hover:text-accent transition-colors"
@@ -119,7 +119,7 @@ export default function Contact() {
             <FaLinkedin size={24} />
           </a>
           <a
-            href="https://github.com/LBT-ELIE"
+            href="https://github.com/leboueelie"
             target="_blank"
             rel="noopener noreferrer"
             className="text-white/70 hover:text-accent transition-colors"
