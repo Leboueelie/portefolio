@@ -179,7 +179,7 @@ Ce projet est sous licence **MIT**. Consultez le fichier [LICENSE](LICENSE) pour
 
 ## 👤 Auteur
 
-**Elie** - Développeur Frontend
+**Elie** - Développeur Full stack junio
 
 - GitHub : [@Leboueelie](https://github.com/Leboueelie)
 - Portfolio : [portefolio-elie2.vercel.app](https://portefolio-elie2.vercel.app)
