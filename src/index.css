@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply font-sans text-charcoal bg-cream dark:bg-gray-900 dark:text-gray-100 transition-colors duration-500;
+        cursor: none;
+    }
+
+    .cursor-dot {
+        width: 8px;
+        height: 8px;
+        background-color: var(--accent);
+        position: fixed;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 99999;
+        transition: transform 0.1s ease;
+    }
+
+    .cursor-outline {
+        width: 32px;
+        height: 32px;
+        border: 2px solid var(--accent);
+        position: fixed;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 99998;
+        transition:
+            transform 0.2s ease,
+            width 0.2s,
+            height 0.2s,
+            border-radius 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    a:hover ~ .cursor-outline,
+    button:hover ~ .cursor-outline,
+    .clickable:hover ~ .cursor-outline,
+    [data-cursor]:hover ~ .cursor-outline {
+        width: auto;
+        height: auto;
+        min-width: 40px;
+        min-height: 24px;
+        padding: 2px 8px;
+        border-radius: 20px;
+    }
+
+    a,
+    button,
+    .clickable,
+    [data-cursor] {
+        cursor: none !important;
+    }
+
+    @media (pointer: coarse) {
+        body {
+            cursor: auto;
+        }
+        .cursor-dot,
+        .cursor-outline {
+            display: none;
+        }
+    }
+
+    .eco * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+@layer components {
+    .glass-card {
+        @apply bg-white/80 backdrop-blur-lg border border-white/60 shadow-xl shadow-deep-blue/10
+           dark:bg-gray-800/80 dark:border-gray-700/60 dark:shadow-gray-900/30;
+    }
+
+    .gradient-text {
+        background: linear-gradient(135deg, var(--accent), #0b3b60);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .dark .gradient-text {
+        background: linear-gradient(135deg, var(--accent), #ffffff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .wave-divider {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        line-height: 0;
+    }
+
+    .bg-accent\/10 {
+        background-color: color-mix(in srgb, var(--accent) 10%, transparent);
+    }
+    .bg-accent\/20 {
+        background-color: color-mix(in srgb, var(--accent) 20%, transparent);
+    }
+    .text-accent\/10 {
+        color: color-mix(in srgb, var(--accent) 10%, transparent);
+    }
+    .border-accent\/30 {
+        border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+    }
+}

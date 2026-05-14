@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E86A33"/>
+      <stop offset="100%" stop-color="#0B3B60"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feMerge>
+        <feMergeNode in="offsetBlur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Fond arrondi avec dégradé -->
+  <rect width="48" height="48" rx="12" fill="url(#bg)"/>
+
+  <!-- Lettres LBT en blanc, centrées -->
+  <text x="24" y="32" font-family="'Outfit', 'Space Grotesk', Arial, sans-serif" font-size="26" font-weight="800" fill="white" text-anchor="middle" letter-spacing="1">LBT</text>
+
+  <!-- Reflet brillant (optionnel) -->
+  <ellipse cx="15" cy="10" rx="8" ry="4" fill="white" opacity="0.3" transform="rotate(-30 15 10)"/>
+</svg>
