@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { ThemeProvider, useTheme } from "./context/ThemeContext";
 import { FaSun, FaMoon, FaLeaf, FaPalette } from "react-icons/fa";
 import Header from "./components/Header";
@@ -12,97 +12,27 @@ import Preloader from "./components/Preloader";
 import Lenis from "lenis";
 
 function AppContent() {
-  // Curseur : refs uniquement, pas de state
-  const cursorDotRef = useRef(null);
-  const cursorOutlineRef = useRef(null);
-  const cursorTextRef = useRef(null);
-  const cursorVariant = useRef("default");
-
   const [preloaderDone, setPreloaderDone] = useState(false);
   const { dark, toggleDark, cycleAccent, eco, toggleEco } = useTheme();
 
-  // Curseur optimisé avec requestAnimationFrame
-  useEffect(() => {
-    const dot = cursorDotRef.current;
-    const outline = cursorOutlineRef.current;
-    const textEl = cursorTextRef.current;
-    if (!dot || !outline) return;
-
-    let rafId;
-    let mouseX = 0;
-    let mouseY = 0;
-
-    const updateCursor = () => {
-      dot.style.transform = `translate(${mouseX - 4}px, ${mouseY - 4}px)`;
-      outline.style.transform = `translate(${mouseX - 16}px, ${mouseY - 16}px)`;
-      rafId = null;
-    };
-
-    const handleMouseMove = (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      if (!rafId) {
-        rafId = requestAnimationFrame(updateCursor);
-      }
-    };
-
-    const handleMouseOver = (e) => {
-      const target = e.target.closest("a, button, .clickable, [data-cursor]");
-      if (target) {
-        const text =
-          target.getAttribute("data-cursor") ||
-          target.textContent?.trim().slice(0, 12) ||
-          "";
-        if (textEl) {
-          textEl.textContent = text;
-          textEl.style.display = "block";
-        }
-        outline.classList.add("cursor-hover");
-        cursorVariant.current = "hover";
-      } else {
-        if (textEl) textEl.style.display = "none";
-        outline.classList.remove("cursor-hover");
-        cursorVariant.current = "default";
-      }
-    };
-
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
-    document.addEventListener("mouseover", handleMouseOver);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseover", handleMouseOver);
-      if (rafId) cancelAnimationFrame(rafId);
-    };
-  }, []);
-
-  // Désactiver le curseur si mode éco ou tactile
-  useEffect(() => {
-    const isTouchDevice =
-      "ontouchstart" in window || navigator.maxTouchPoints > 0;
-    const disableCursor = eco || isTouchDevice;
-    document.body.style.cursor = disableCursor ? "auto" : "none";
-    if (cursorDotRef.current)
-      cursorDotRef.current.style.display = disableCursor ? "none" : "block";
-    if (cursorOutlineRef.current)
-      cursorOutlineRef.current.style.display = disableCursor ? "none" : "block";
-  }, [eco]);
-
-  // Lenis smooth scroll
+  // Lenis smooth scroll (conservé)
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 0.6, // plus léger
+      duration: 0.6,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smooth: true,
     });
-
     function raf(time) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
-
     return () => lenis.destroy();
+  }, []);
+
+  // Désactiver le curseur custom si mode éco (mais on n'en a plus, donc on garde juste le curseur normal)
+  useEffect(() => {
+    document.body.style.cursor = "auto"; // toujours auto
   }, []);
 
   // Easter egg Konami
@@ -144,12 +74,7 @@ function AppContent() {
       )}
       {preloaderDone && (
         <div className="overflow-x-hidden">
-          {/* Curseur personnalisé (aucun re‑render) */}
-          <div ref={cursorDotRef} className="cursor-dot" />
-          <div ref={cursorOutlineRef} className="cursor-outline">
-            <span ref={cursorTextRef} className="cursor-text" />
-          </div>
-
+          {/* Plus de curseur custom */}
           <Header />
           <Hero />
           <About />
