@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { FaTimes } from "react-icons/fa";
 
 export default function ProjectModal({ project, onClose }) {
+  // Bloquer le scroll de la page derrière
   useEffect(() => {
     if (!project) return;
     const scrollY = window.scrollY;
@@ -29,13 +30,14 @@ export default function ProjectModal({ project, onClose }) {
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
       onClick={onClose}
     >
-      {/* Conteneur avec hauteur fixe et overflow-y: scroll */}
+      {/* data-lenis-prevent empêche Lenis d'intercepter le scroll ici */}
       <motion.div
         initial={{ scale: 0.95, y: 10 }}
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.95, y: 10 }}
-        className="bg-white dark:bg-gray-800 rounded-2xl w-full max-w-2xl overflow-y-scroll shadow-2xl"
+        className="bg-white dark:bg-gray-800 rounded-2xl w-full max-w-2xl shadow-2xl overflow-y-auto"
         style={{ maxHeight: "90vh" }}
+        data-lenis-prevent
         onClick={(e) => e.stopPropagation()}
       >
         {/* Image */}
@@ -59,7 +61,7 @@ export default function ProjectModal({ project, onClose }) {
           </button>
         </div>
 
-        {/* Contenu (texte + boutons) */}
+        {/* Contenu */}
         <div className="p-6 space-y-5">
           <div>
             <span className="text-sm text-accent font-medium">
@@ -132,7 +134,6 @@ export default function ProjectModal({ project, onClose }) {
             </div>
           </div>
 
-          {/* Liens */}
           <div className="flex flex-wrap gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
             {project.github && (
               <a
