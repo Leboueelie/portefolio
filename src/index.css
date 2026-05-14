@@ -18,7 +18,9 @@
         border-radius: 50%;
         pointer-events: none;
         z-index: 99999;
-        transition: transform 0.1s ease;
+        will-change: transform;
+        top: 0;
+        left: 0;
     }
 
     .cursor-outline {
@@ -29,42 +31,50 @@
         border-radius: 50%;
         pointer-events: none;
         z-index: 99998;
-        transition:
-            transform 0.2s ease,
-            width 0.2s,
-            height 0.2s,
-            border-radius 0.2s;
+        will-change: transform;
         display: flex;
         align-items: center;
         justify-content: center;
+        top: 0;
+        left: 0;
+        transition:
+            width 0.2s,
+            height 0.2s,
+            border-radius 0.2s,
+            border-color 0.2s;
     }
 
-    a:hover ~ .cursor-outline,
-    button:hover ~ .cursor-outline,
-    .clickable:hover ~ .cursor-outline,
-    [data-cursor]:hover ~ .cursor-outline {
+    .cursor-outline.cursor-hover {
         width: auto;
         height: auto;
         min-width: 40px;
         min-height: 24px;
         padding: 2px 8px;
         border-radius: 20px;
+        background: var(--accent);
+        border-color: transparent;
     }
 
-    a,
-    button,
-    .clickable,
-    [data-cursor] {
-        cursor: none !important;
+    .cursor-text {
+        display: none;
+        color: white;
+        font-size: 10px;
+        font-weight: bold;
+        white-space: nowrap;
     }
 
+    .cursor-outline.cursor-hover .cursor-text {
+        display: block;
+    }
+
+    /* Désactiver le curseur custom sur mobile / mode éco */
     @media (pointer: coarse) {
         body {
-            cursor: auto;
+            cursor: auto !important;
         }
         .cursor-dot,
         .cursor-outline {
-            display: none;
+            display: none !important;
         }
     }
 
