@@ -2,7 +2,7 @@
 
 Un portfolio web moderne et interactif construit avec React, Vite et Three.js. Showcase de compétences en développement frontend avec animations fluides et design contemporain.
 
-🔗 **[Voir la démo live](https://portefolio-elie2.vercel.app)**
+🔗 **[Voir la démo live](https://portefolio-neon-gamma.vercel.app/)**
 
 ---
 
