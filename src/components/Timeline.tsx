@@ -1,23 +1,31 @@
 import { motion } from "framer-motion";
 import { FaGraduationCap, FaBriefcase } from "react-icons/fa";
+import { IconType } from "react-icons";
 
-const events = [
+interface TimelineEvent {
+  date: string;
+  title: string;
+  desc: string;
+  icon: IconType;
+}
+
+const events: TimelineEvent[] = [
   {
     date: "2024",
-    title: "Debut en developpement web",
-    desc: "Formation autodidacte en HTML, CSS, JavaScript, premiers projets personnels.",
+    title: "Premiers pas en code",
+    desc: "Decouverte du developpement web en terminale A2 (HTML, CSS, JavaScript). Premiers sites vitrines et applications simples en autodidacte.",
     icon: FaBriefcase,
   },
   {
-    date: "2025 - 2028",
-    title: "Universite Virtuelle de Cote d'Ivoire",
-    desc: "Licence en E-administration & Transformation Digitale. Specialisation en services publics numeriques.",
+    date: "2025",
+    title: "Integration UVCI",
+    desc: "Admission a l'Universite Virtuelle de Cote d'Ivoire en Licence E-administration & Transformation Digitale. Poursuite de l'apprentissage en React, Node.js et Django.",
     icon: FaGraduationCap,
   },
   {
     date: "2026",
-    title: "Developpeur Full Stack Junior ",
-    desc: "Realisation de CV Builder, AfriCode, Dashboard Admin, et plusieurs autres projets full stack.",
+    title: "Projets & experimentation",
+    desc: "Realisation de CV Builder, AfriCode, Dashboard Admin et Portfolio LBT. Stack : React, NestJS, Docker.",
     icon: FaBriefcase,
   },
 ];

@@ -43,7 +43,6 @@ export default function Header() {
             <a
               key={link.href}
               href={link.href}
-              data-cursor={link.label}
               className="clickable text-charcoal/80 dark:text-gray-200 hover:text-accent font-medium transition-colors"
             >
               {link.label}
@@ -65,7 +64,6 @@ export default function Header() {
           </button>
           <a
             href="mailto:leboueelie@gmail.com"
-            data-cursor="Contact"
             className="clickable px-4 py-2 bg-accent text-white rounded-full text-sm font-semibold hover:bg-accent/90 transition-colors shadow-md"
           >
             Contact
@@ -75,6 +73,7 @@ export default function Header() {
         <button
           className="md:hidden clickable text-charcoal dark:text-white"
           onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Menu"
         >
           {mobileOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
         </button>
@@ -97,14 +96,14 @@ export default function Header() {
             </a>
           ))}
           <div className="flex gap-4 items-center">
-            <button onClick={toggleDark} className="text-xl">
+            <button onClick={toggleDark} className="text-xl" aria-label="Mode sombre">
               {dark ? (
                 <FaSun className="text-yellow-400" />
               ) : (
                 <FaMoon className="text-gray-600" />
               )}
             </button>
-            <button onClick={toggleEco} className="text-sm">
+            <button onClick={toggleEco} className="text-sm" aria-label="Mode eco">
               <FaLeaf className={eco ? "text-green-leaf" : "text-gray-400"} />
             </button>
           </div>

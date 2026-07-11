@@ -1,6 +1,15 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 
-const ThemeContext = createContext();
+interface ThemeContextType {
+  dark: boolean;
+  toggleDark: () => void;
+  accent: string;
+  cycleAccent: () => void;
+  eco: boolean;
+  toggleEco: () => void;
+}
+
+const ThemeContext = createContext<ThemeContextType | null>(null);
 
 const accents = ["orange", "green", "blue"];
 const defaultAccent = "orange";
@@ -11,7 +20,7 @@ const accentColors = {
   blue: "#0B3B60",
 };
 
-export function ThemeProvider({ children }) {
+export function ThemeProvider({ children }: { children: ReactNode }) {
   const [dark, setDark] = useState(
     () => localStorage.getItem("theme") === "dark",
   );
@@ -30,7 +39,7 @@ export function ThemeProvider({ children }) {
       localStorage.setItem("theme", "light");
     }
 
-    root.style.setProperty("--accent", accentColors[accent]);
+    root.style.setProperty("--accent", accentColors[accent as keyof typeof accentColors]);
     localStorage.setItem("accent", accent);
 
     if (eco) {
@@ -57,4 +66,8 @@ export function ThemeProvider({ children }) {
   );
 }
 
-export const useTheme = () => useContext(ThemeContext);
+export const useTheme = (): ThemeContextType => {
+  const context = useContext(ThemeContext);
+  if (!context) throw new Error("useTheme must be used within ThemeProvider");
+  return context;
+};

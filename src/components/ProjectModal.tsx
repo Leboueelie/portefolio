@@ -1,9 +1,14 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { FaTimes } from "react-icons/fa";
+import { FaTimes, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { Project } from "../data/projects";
 
-export default function ProjectModal({ project, onClose }) {
-  // Bloquer le scroll de la page derrière
+interface ProjectModalProps {
+  project: Project | null;
+  onClose: () => void;
+}
+
+export default function ProjectModal({ project, onClose }: ProjectModalProps) {
   useEffect(() => {
     if (!project) return;
     const scrollY = window.scrollY;
@@ -20,7 +25,18 @@ export default function ProjectModal({ project, onClose }) {
     };
   }, [project]);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    if (project) window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [project, onClose]);
+
   if (!project) return null;
+
+  const shareUrl = window.location.href;
+  const shareText = `Découvrez le projet ${project.title} de LEBOUE ELIE (LBT)`;
 
   return (
     <motion.div
@@ -30,7 +46,6 @@ export default function ProjectModal({ project, onClose }) {
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
       onClick={onClose}
     >
-      {/* data-lenis-prevent empêche Lenis d'intercepter le scroll ici */}
       <motion.div
         initial={{ scale: 0.95, y: 10 }}
         animate={{ scale: 1, y: 0 }}
@@ -40,7 +55,6 @@ export default function ProjectModal({ project, onClose }) {
         data-lenis-prevent
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Image */}
         <div className="relative h-40 sm:h-52 bg-gradient-to-br from-deep-blue/10 to-accent/10 rounded-t-2xl overflow-hidden">
           {project.image ? (
             <img
@@ -61,7 +75,6 @@ export default function ProjectModal({ project, onClose }) {
           </button>
         </div>
 
-        {/* Contenu */}
         <div className="p-6 space-y-5">
           <div>
             <span className="text-sm text-accent font-medium">
@@ -86,10 +99,10 @@ export default function ProjectModal({ project, onClose }) {
           {project.features?.length > 0 && (
             <div>
               <h3 className="text-lg font-semibold text-accent mb-1">
-                Fonctionnalités
+                Fonctionnalites
               </h3>
               <ul className="list-disc list-inside space-y-1 text-charcoal/80 dark:text-gray-300">
-                {project.features.map((f, i) => (
+                {project.features.map((f: string, i: number) => (
                   <li key={i}>{f}</li>
                 ))}
               </ul>
@@ -99,7 +112,7 @@ export default function ProjectModal({ project, onClose }) {
           {project.challenges && (
             <div>
               <h3 className="text-lg font-semibold text-accent mb-1">
-                Défis techniques
+                Defis techniques
               </h3>
               <p className="text-charcoal/80 dark:text-gray-300">
                 {project.challenges}
@@ -110,7 +123,7 @@ export default function ProjectModal({ project, onClose }) {
           {project.role && (
             <div>
               <h3 className="text-lg font-semibold text-accent mb-1">
-                Mon rôle
+                Mon role
               </h3>
               <p className="text-charcoal/80 dark:text-gray-300">
                 {project.role}
@@ -120,10 +133,10 @@ export default function ProjectModal({ project, onClose }) {
 
           <div>
             <h3 className="text-lg font-semibold text-accent mb-1">
-              Stack utilisée
+              Stack utilis\u00e9e
             </h3>
             <div className="flex flex-wrap gap-2">
-              {project.technos.map((tech) => (
+              {project.technos.map((tech: string) => (
                 <span
                   key={tech}
                   className="px-3 py-1 bg-accent/10 text-accent text-sm font-semibold rounded-full"
@@ -134,7 +147,7 @@ export default function ProjectModal({ project, onClose }) {
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+          <div className="flex flex-wrap gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
             {project.github && (
               <a
                 href={project.github}
@@ -152,9 +165,29 @@ export default function ProjectModal({ project, onClose }) {
                 rel="noopener noreferrer"
                 className="px-5 py-2.5 bg-accent text-white rounded-lg hover:bg-accent/90 transition-colors font-medium"
               >
-                Voir la démo
+                Voir la demo
               </a>
             )}
+            <a
+              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-2.5 bg-[#0A66C2] text-white rounded-lg hover:opacity-90 transition-colors font-medium flex items-center gap-2"
+              title="Partager sur LinkedIn"
+            >
+              <FaLinkedin />
+              <span className="hidden sm:inline">Partager</span>
+            </a>
+            <a
+              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-2.5 bg-[#1DA1F2] text-white rounded-lg hover:opacity-90 transition-colors font-medium flex items-center gap-2"
+              title="Partager sur Twitter"
+            >
+              <FaTwitter />
+              <span className="hidden sm:inline">Tweeter</span>
+            </a>
           </div>
         </div>
       </motion.div>

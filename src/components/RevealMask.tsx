@@ -1,8 +1,14 @@
 import { motion } from "framer-motion";
+import { ReactNode } from "react";
 
-export default function RevealMask({ children, className }) {
+interface RevealMaskProps {
+  children: ReactNode;
+  className?: string;
+}
+
+export default function RevealMask({ children, className }: RevealMaskProps) {
   return (
-    <div className={`relative overflow-hidden ${className}`}>
+    <div className={`relative overflow-hidden ${className || ""}`}>
       <motion.div
         initial={{ y: "100%" }}
         whileInView={{ y: 0 }}
@@ -12,7 +18,6 @@ export default function RevealMask({ children, className }) {
       >
         {children}
       </motion.div>
-      {/* Overlay coloré qui disparaît */}
       <motion.div
         className="absolute inset-0 bg-accent"
         initial={{ scaleX: 1 }}

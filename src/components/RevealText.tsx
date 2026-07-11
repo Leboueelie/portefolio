@@ -1,7 +1,11 @@
-// src/components/RevealText.jsx
 import { motion } from "framer-motion";
 
-export default function RevealText({ text, className }) {
+interface RevealTextProps {
+  text: string;
+  className?: string;
+}
+
+export default function RevealText({ text, className }: RevealTextProps) {
   const words = text.split(" ");
   return (
     <motion.span className={className}>

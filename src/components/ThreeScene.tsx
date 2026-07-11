@@ -1,10 +1,11 @@
 import { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
+import { Mesh } from "three";
 
 function Cube() {
-  const meshRef = useRef();
-  useFrame((state, delta) => {
+  const meshRef = useRef<Mesh>(null!);
+  useFrame((_state, delta) => {
     meshRef.current.rotation.x += delta * 0.2;
     meshRef.current.rotation.y += delta * 0.3;
   });

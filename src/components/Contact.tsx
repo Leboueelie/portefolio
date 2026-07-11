@@ -4,12 +4,12 @@ import { FaLinkedin, FaGithub } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
 
 export default function Contact() {
-  const form = useRef();
+  const form = useRef<HTMLFormElement>(null!);
   const [sent, setSent] = useState(false);
   const [err, setErr] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const sendEmail = (e) => {
+  const sendEmail = (e: React.FormEvent) => {
     e.preventDefault();
     setErr("");
     setLoading(true);
@@ -19,9 +19,6 @@ export default function Contact() {
       from_name: formData.get("user_name"),
       user_email: formData.get("user_email"),
       message: formData.get("message"),
-      // reply_to est automatiquement géré par EmailJS si configuré dans le template,
-      // mais on peut aussi le forcer ici :
-      // reply_to: formData.get('user_email'),
     };
 
     emailjs
@@ -36,7 +33,7 @@ export default function Contact() {
         form.current.reset();
       })
       .catch((error) => {
-        setErr("L'envoi a échoué. Veuillez réessayer.");
+        setErr("L'envoi a echoue. Veuillez reessayer.");
         console.error("Erreur EmailJS :", error);
       })
       .finally(() => setLoading(false));
@@ -57,7 +54,7 @@ export default function Contact() {
           Parlons de votre projet
         </motion.h2>
         <p className="text-cream/80 dark:text-gray-300">
-          Une idée, une mission, un stage ? Écrivez‑moi.
+          Une idee, une mission, un stage ? Ecrivez-moi.
         </p>
 
         {sent ? (
@@ -66,7 +63,7 @@ export default function Contact() {
             animate={{ scale: 1, opacity: 1 }}
             className="py-4 px-6 bg-green-leaf/20 border border-green-leaf/40 text-green-leaf rounded-xl font-medium"
           >
-            ✅ Message envoyé avec succès ! Je vous répondrai au plus vite.
+            Message envoye avec succes ! Je vous repondrai au plus vite.
           </motion.div>
         ) : (
           <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-4">
@@ -95,9 +92,8 @@ export default function Contact() {
               type="submit"
               disabled={loading}
               className="clickable px-8 py-3 bg-accent hover:bg-accent/90 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold rounded-xl transition-all transform hover:-translate-y-1 shadow-xl shadow-accent/20"
-              data-cursor="Envoyer"
             >
-              {loading ? "Envoi…" : "Envoyer le message"}
+              {loading ? "Envoi..." : "Envoyer le message"}
             </button>
           </form>
         )}

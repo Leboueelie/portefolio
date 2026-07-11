@@ -1,7 +1,11 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-export default function Preloader({ onComplete }) {
+interface PreloaderProps {
+  onComplete: () => void;
+}
+
+export default function Preloader({ onComplete }: PreloaderProps) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { ThemeProvider, useTheme } from "./context/ThemeContext";
 import { FaSun, FaMoon, FaLeaf, FaPalette } from "react-icons/fa";
+import { ErrorBoundary } from "react-error-boundary";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -9,20 +10,44 @@ import Skills from "./components/Skills";
 import Timeline from "./components/Timeline";
 import Contact from "./components/Contact";
 import Preloader from "./components/Preloader";
+import Stats from "./components/Stats";
+import Services from "./components/Services";
+import Testimonials from "./components/Testimonials";
+import Interests from "./components/Interests";
+import ThreeScene from "./components/ThreeScene";
 import Lenis from "lenis";
+
+function ErrorFallback({ error }: { error: unknown }) {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-deep-blue text-white p-8">
+      <div className="text-center space-y-4">
+        <h1 className="text-4xl font-bold">Oups !</h1>
+        <p className="text-cream/80">Une erreur est survenue.</p>
+        <pre className="text-sm text-red-300 bg-white/10 p-4 rounded-lg max-w-md mx-auto overflow-auto">
+          {error instanceof Error ? error.message : "Erreur inconnue"}
+        </pre>
+        <button
+          onClick={() => window.location.reload()}
+          className="px-6 py-3 bg-accent text-white rounded-xl hover:bg-accent/90 transition-colors"
+        >
+          Recharger la page
+        </button>
+      </div>
+    </div>
+  );
+}
 
 function AppContent() {
   const [preloaderDone, setPreloaderDone] = useState(false);
   const { dark, toggleDark, cycleAccent, eco, toggleEco } = useTheme();
 
-  // Lenis smooth scroll (conservé)
   useEffect(() => {
     const lenis = new Lenis({
       duration: 0.6,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smooth: true,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
     });
-    function raf(time) {
+    function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
@@ -30,12 +55,10 @@ function AppContent() {
     return () => lenis.destroy();
   }, []);
 
-  // Désactiver le curseur custom si mode éco (mais on n'en a plus, donc on garde juste le curseur normal)
   useEffect(() => {
-    document.body.style.cursor = "auto"; // toujours auto
+    document.body.style.cursor = "auto";
   }, []);
 
-  // Easter egg Konami
   useEffect(() => {
     const konami = [
       "ArrowUp",
@@ -50,12 +73,12 @@ function AppContent() {
       "a",
     ];
     let idx = 0;
-    const handler = (e) => {
+    const handler = (e: KeyboardEvent) => {
       if (e.key === konami[idx]) {
         idx++;
         if (idx === konami.length) {
           alert(
-            "🎉 Code Konami activé ! Bienvenue dans le multiverse de LEBOUE ELIE (LBT)",
+            "Code Konami active ! Bienvenue dans le multiverse de LEBOUE ELIE (LBT)",
           );
           idx = 0;
         }
@@ -74,19 +97,23 @@ function AppContent() {
       )}
       {preloaderDone && (
         <div className="overflow-x-hidden">
-          {/* Plus de curseur custom */}
           <Header />
           <Hero />
           <About />
           <Projects />
           <Skills />
+          <Stats />
+          <Services />
+          <Testimonials />
           <Timeline />
+          <Interests />
+          <ThreeScene />
           <Contact />
 
           <footer className="bg-deep-blue dark:bg-gray-900 text-cream/80 dark:text-gray-300 text-center py-6 text-sm space-y-2">
             <p>
-              © {new Date().getFullYear()} LEBOUE ELIE (LBT). Tous droits
-              réservés.
+              (c) {new Date().getFullYear()} LEBOUE ELIE (LBT). Tous droits
+              reserves.
             </p>
             <div className="flex justify-center gap-6 items-center">
               <button
@@ -112,7 +139,7 @@ function AppContent() {
                 className="flex items-center gap-1 hover:text-white transition-colors"
               >
                 <FaLeaf className={eco ? "text-green-leaf" : "text-gray-400"} />
-                <span>{eco ? "Mode standard" : "Mode éco"}</span>
+                <span>{eco ? "Mode standard" : "Mode eco"}</span>
               </button>
             </div>
           </footer>
@@ -124,8 +151,10 @@ function AppContent() {
 
 export default function App() {
   return (
-    <ThemeProvider>
-      <AppContent />
-    </ThemeProvider>
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <ThemeProvider>
+        <AppContent />
+      </ThemeProvider>
+    </ErrorBoundary>
   );
 }

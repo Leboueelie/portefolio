@@ -1,14 +1,30 @@
 import { useEffect, useRef } from "react";
 
+interface Particle {
+  x: number;
+  y: number;
+  size: number;
+  speedX: number;
+  speedY: number;
+  color: string;
+  update: () => void;
+  draw: () => void;
+}
+
 export default function ParticleBackground() {
-  const canvasRef = useRef(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null!);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    let animationFrameId;
-    let particles = [];
+    const ctx = canvas.getContext("2d")!;
+    let animationFrameId: number;
+    let particles: Particle[] = [];
+    let mouse: { x: number | null; y: number | null; radius: number } = {
+      x: null,
+      y: null,
+      radius: 100,
+    };
 
     const resize = () => {
       canvas.width = canvas.offsetWidth;
@@ -19,7 +35,14 @@ export default function ParticleBackground() {
 
     const colors = ["#0B3B60", "#E86A33", "#2A9D8F"];
 
-    class Particle {
+    class ParticleImpl implements Particle {
+      x: number;
+      y: number;
+      size: number;
+      speedX: number;
+      speedY: number;
+      color: string;
+
       constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
@@ -50,7 +73,7 @@ export default function ParticleBackground() {
         Math.floor((canvas.width * canvas.height) / 10000),
       );
       for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
+        particles.push(new ParticleImpl());
       }
     };
     init();
@@ -75,8 +98,7 @@ export default function ParticleBackground() {
       }
     };
 
-    let mouse = { x: null, y: null, radius: 100 };
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       mouse.x = e.clientX;
       mouse.y = e.clientY;
     };
@@ -89,10 +111,12 @@ export default function ParticleBackground() {
         p.draw();
       });
       connect();
-      if (mouse.x && mouse.y) {
+      const mx = mouse.x;
+      const my = mouse.y;
+      if (mx !== null && my !== null) {
         particles.forEach((p) => {
-          const dx = p.x - mouse.x;
-          const dy = p.y - mouse.y;
+          const dx = p.x - mx;
+          const dy = p.y - my;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < mouse.radius) {
             const angle = Math.atan2(dy, dx);

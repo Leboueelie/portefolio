@@ -1,4 +1,19 @@
-export const projects = [
+export interface Project {
+  id: number;
+  title: string;
+  shortDescription: string;
+  longDescription: string;
+  features: string[];
+  challenges: string;
+  role: string;
+  technos: string[];
+  image: string | null;
+  github: string | null;
+  demo: string | null;
+  date: string;
+}
+
+export const projects: Project[] = [
   {
     id: 1,
     title: "CV Builder",
@@ -61,7 +76,7 @@ export const projects = [
       "Execution securisee du code utilisateur, performance de l'editeur.",
     role: "Developpeur full stack, responsable backend",
     technos: ["NestJS", "React", "PostgreSQL", "Docker"],
-    image: "/projects/africode.png",
+    image: null,
     github: null,
     demo: null,
     date: "2026",

@@ -1,7 +1,5 @@
 import { motion } from "framer-motion";
-// import { PDFDownloadLink } from "@react-pdf/renderer";
 import ParticleBackground from "./ParticleBackground";
-// import CvDocument from "./CvDocument";
 import { useTheme } from "../context/ThemeContext";
 import { FaPalette } from "react-icons/fa";
 
@@ -24,37 +22,29 @@ export default function Hero() {
           <h1 className="text-5xl md:text-7xl font-heading font-bold text-deep-blue dark:text-white leading-none">
             Je construis des{" "}
             <span className="gradient-text">services publics</span> nouvelle
-            generation
+            génération
           </h1>
-          <p className="text-lg text-charcoal/70 dark:text-gray-300 max-w-lg">
-            Developpeur full stack et etudiant a l'UVCI, je faconne des
-            interfaces alliant rigueur administrative, accessibilite et
-            performance.
+          <p className="text-lg text-charcoal/70 dark:text-gray-300 max-w-xl leading-relaxed">
+            Développeur web junior passionné par la <strong className="text-deep-blue dark:text-white">transformation numérique</strong>,
+            je conçois des applications web modernes qui rendent les services
+            publics plus <strong className="text-accent">accessibles</strong>, plus{" "}
+            <strong className="text-accent">efficaces</strong> et résolument
+            tournés vers l'utilisateur. De l'API à l'interface, chaque ligne de
+            code vise un impact concret.
           </p>
           <div className="flex flex-wrap gap-4">
             <a
               href="#projects"
-              data-cursor="Projets"
               className="clickable inline-block px-8 py-4 bg-accent text-white font-semibold rounded-xl hover:bg-accent/90 transition-all shadow-lg"
             >
-              Decouvrir mes projets
+              Découvrir mes projets
             </a>
             <a
               href="#contact"
-              data-cursor="Contact"
               className="clickable inline-block px-8 py-4 border-2 border-accent text-accent dark:border-white dark:text-white font-semibold rounded-xl hover:bg-accent hover:text-white transition-all"
             >
               Me contacter
             </a>
-            {/* <PDFDownloadLink
-              document={<CvDocument />}
-              fileName="LEBOUE_ELIE_CV.pdf"
-              className="clickable inline-block px-6 py-4 bg-green-leaf text-white font-semibold rounded-xl hover:bg-green-leaf/90 transition-all shadow-lg"
-            >
-              {({ loading }) =>
-                loading ? "Preparation..." : "Telecharger mon CV"
-              }
-            </PDFDownloadLink>*/}
             <button
               onClick={cycleAccent}
               className="clickable inline-block px-4 py-4 border-2 border-gray-400 text-gray-500 dark:text-gray-300 font-semibold rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-all"
