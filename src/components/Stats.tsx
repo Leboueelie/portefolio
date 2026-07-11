@@ -69,7 +69,7 @@ function StatCard({ stat, index }: { stat: StatItem; index: number }) {
 
 export default function Stats() {
   return (
-    <section className="py-20 px-6 bg-white dark:bg-gray-900 transition-colors">
+    <section className="py-20 px-6 bg-cream dark:bg-gray-900 transition-colors">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl font-heading font-bold text-center gradient-text mb-16">
           Quelques chiffres

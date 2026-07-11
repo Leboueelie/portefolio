@@ -30,7 +30,7 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="py-24 px-6 bg-white dark:bg-gray-900 transition-colors">
+    <section className="py-24 px-6 bg-cream dark:bg-gray-900 transition-colors">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl font-heading font-bold text-center gradient-text mb-4">
           Ils me recommandent

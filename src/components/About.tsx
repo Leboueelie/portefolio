@@ -24,7 +24,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="py-24 px-6 bg-white dark:bg-gray-900 relative transition-colors"
+      className="py-24 px-6 bg-cream dark:bg-gray-900 relative transition-colors"
     >
       <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-start">
         <div className="space-y-8">

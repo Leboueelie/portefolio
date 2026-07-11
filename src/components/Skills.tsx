@@ -94,7 +94,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="py-24 px-6 bg-white dark:bg-gray-900 transition-colors"
+      className="py-24 px-6 bg-cream dark:bg-gray-900 transition-colors"
     >
       <h2 className="text-4xl font-heading font-bold text-center gradient-text mb-16">
         Technologies que j'utilise
