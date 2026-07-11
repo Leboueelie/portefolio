@@ -13,7 +13,7 @@ import {
   SiTypescript,
   SiNextdotjs,
   SiPostgresql,
-  SiMongodb,
+  SiMysql,
   SiDjango,
   SiNestjs,
   SiTailwindcss,
@@ -69,7 +69,7 @@ const categories: SkillCategory[] = [
     label: "Base de donn\u00e9es",
     skills: [
       { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1", level: 60 },
-      { name: "MongoDB", icon: SiMongodb, color: "#47A248", level: 55 },
+      { name: "SQL", icon: SiMysql, color: "#336791", level: 60 },
       { name: "Prisma", icon: SiPrisma, color: "#1B222D", level: 60 },
     ],
   },
