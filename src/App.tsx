@@ -130,9 +130,9 @@ function AppContent() {
               <button
                 onClick={cycleAccent}
                 className="flex items-center gap-1 hover:text-white transition-colors"
+                title="Changer la couleur d'accent"
               >
-                <FaPalette className="text-gray-400" />
-                <span>Changer l'accent</span>
+                <FaPalette className="text-gray-400" size={14} />
               </button>
               <button
                 onClick={toggleEco}

@@ -47,10 +47,10 @@ export default function Hero() {
             </a>
             <button
               onClick={cycleAccent}
-              className="clickable inline-block px-4 py-4 border-2 border-gray-400 text-gray-500 dark:text-gray-300 font-semibold rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-all"
+              className="clickable inline-block px-4 py-4 text-gray-400 dark:text-gray-500 hover:text-accent transition-all"
               title="Changer la couleur d'accent"
             >
-              <FaPalette size={20} />
+              <FaPalette size={18} />
             </button>
           </div>
         </motion.div>
