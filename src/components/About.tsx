@@ -153,7 +153,7 @@ export default function About() {
               <FaProjectDiagram /> Mes projets
             </a>
             <a
-              href="/cv.pdf"
+              href="/CV-Leboue-Elie.pdf"
               target="_blank"
               className="clickable inline-flex items-center gap-2 px-6 py-3 border-2 border-accent text-accent font-semibold rounded-xl hover:bg-accent hover:text-white transition-all"
             >
