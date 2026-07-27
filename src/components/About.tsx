@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   FaProjectDiagram,
+  FaDownload,
   FaEnvelope,
   FaLinkedin,
   FaGithub,
@@ -150,6 +151,13 @@ export default function About() {
               className="clickable inline-flex items-center gap-2 px-6 py-3 bg-accent text-white font-semibold rounded-xl hover:bg-accent/90 transition-all shadow-lg"
             >
               <FaProjectDiagram /> Mes projets
+            </a>
+            <a
+              href="/cv.pdf"
+              target="_blank"
+              className="clickable inline-flex items-center gap-2 px-6 py-3 border-2 border-accent text-accent font-semibold rounded-xl hover:bg-accent hover:text-white transition-all"
+            >
+              <FaDownload /> CV
             </a>
             <a
               href="#contact"
