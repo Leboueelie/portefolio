@@ -13,7 +13,7 @@ const events: TimelineEvent[] = [
   {
     date: "2024",
     title: "Premiers pas en code",
-    desc: "Decouverte du developpement web en terminale A2 (HTML, CSS, JavaScript). Premiers sites vitrines et applications simples en autodidacte.",
+    desc: "Decouverte du developpement web (HTML, CSS, JavaScript). Premiers sites vitrines et applications simples en autodidacte.",
     icon: FaBriefcase,
   },
   {

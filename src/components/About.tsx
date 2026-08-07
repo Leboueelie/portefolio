@@ -116,14 +116,13 @@ export default function About() {
               technologie.
             </p>
             <p>
-              Tout a commencé en 2024 en terminale A2, où j'ai découvert le
-              développement web en autodidacte. Depuis, j'ai enchaîné les
-              projets — du dashboard administratif aux plateformes e-learning
-              — en passant par la conception d'API. Je touche à tout sans
-              être spécialiste, et c'est ce qui me permet de comprendre
-              l'ensemble des maillons d'un projet. Ce qui me motive ? Voir
-              un citoyen gagner du temps sur une démarche administrative
-              grâce à une interface bien conçue.
+              Depuis mes débuts en 2024, j'ai enchaîné les projets — du
+              dashboard administratif aux plateformes e-learning — en passant
+              par la conception d'API. Je touche à tout sans être
+              spécialiste, et c'est ce qui me permet de comprendre l'ensemble
+              des maillons d'un projet. Ce qui me motive ? Voir un citoyen
+              gagner du temps sur une démarche administrative grâce à une
+              interface bien conçue.
             </p>
             <p>
               Ma méthode : du code propre, des tests rigoureux, et une
