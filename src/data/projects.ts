@@ -158,7 +158,7 @@ export const projects: Project[] = [
     ],
     image: "/projects/portfolio-lbt.png",
     github: "https://github.com/Leboueelie/portefolio",
-    demo: "https://portefolio-neon-gamma.vercel.app/",
+    demo: "https://leboueelie.vercel.app/",
     date: "2026",
   },
   {
