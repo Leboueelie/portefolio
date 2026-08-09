@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://portefolio-neon-gamma.vercel.app/sitemap.xml
