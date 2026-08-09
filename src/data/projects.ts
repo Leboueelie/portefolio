@@ -99,7 +99,7 @@ export const projects: Project[] = [
     technos: ["NestJS", "Axios", "React", "Tailwind CSS"],
     image: "/projects/it-foundation.png",
     github: null,
-    demo: "https://bo.the-itf.com/",
+    demo: "https://the-itf.com/",
     date: "2026",
   },
   {
