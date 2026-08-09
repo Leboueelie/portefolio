@@ -77,7 +77,7 @@ export const projects: Project[] = [
     role: "Developpeur full stack, responsable backend",
     technos: ["NestJS", "React", "PostgreSQL", "Docker"],
     image: null,
-    github: null,
+    github: "https://github.com/Leboueelie/Africode-hub",
     demo: null,
     date: "2026",
   },
@@ -159,6 +159,52 @@ export const projects: Project[] = [
     image: "/projects/portfolio-lbt.png",
     github: "https://github.com/Leboueelie/portefolio",
     demo: "https://portefolio-neon-gamma.vercel.app/",
+    date: "2026",
+  },
+  {
+    id: 7,
+    title: "CMCI Rapport",
+    shortDescription:
+      "Plateforme full-stack de gestion des rapports et activites pour la CMCI : membres, assemblees, territoires et validations.",
+    longDescription:
+      "Application full-stack complet de reporting et gestion institutionnelle. Backend modulaire NestJS avec Prisma et authentification JWT (auth, users, membres, assemblees, territoires, rapports, validations, notifications, audit). Frontend Next.js avec React Query, formulaires react-hook-form + zod. Deploye sur Vercel et Heroku.",
+    features: [
+      "Auth JWT + roles (Passport)",
+      "Gestion membres, assemblees, territoires",
+      "Workflow de validations",
+      "Notifications",
+      "Audit trail",
+      "Dashboard statistique",
+    ],
+    challenges:
+      "Conception d'une API NestJS modulaire et testee, gestion des roles et permissions, securisation des endpoints.",
+    role: "Developpeur full stack",
+    technos: ["NestJS", "Prisma", "PostgreSQL", "Next.js", "TypeScript"],
+    image: null,
+    github: "https://github.com/Leboueelie/CMCI-RAPPORT",
+    demo: "https://cmci-rapport-frontend.vercel.app/",
+    date: "2026",
+  },
+  {
+    id: 8,
+    title: "LBTCode",
+    shortDescription:
+      "Assistant IA desktop : chat multi-providers (Anthropic, OpenAI, Gemini, Grok) avec editeur de code et explorateur de fichiers.",
+    longDescription:
+      "Application desktop construite avec Tauri (Rust) et Bun. Chat avec plusieurs modeles de langage, ouverture et sauvegarde de fichiers via IPC natif, navigation arborescente, configuration des providers. Backend API Node natif sur localhost:3001.",
+    features: [
+      "Chat IA multi-providers avec historique",
+      "Editeur de code natif (IPC)",
+      "Explorateur de fichiers",
+      "Configuration provider / cle API / modele",
+    ],
+    challenges:
+      "Integration Tauri (Rust) + backend Node, communication IPC native, gestion multi-providers LLM.",
+    role: "Developpeur full stack",
+    technos: ["Tauri", "React", "TypeScript", "Bun", "Node.js"],
+    image: null,
+    github: "https://github.com/Leboueelie/LBTCode",
+    demo: null,
     date: "2026",
   },
 ];
