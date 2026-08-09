@@ -105,31 +105,26 @@ export default function About() {
               <strong className="text-deep-blue dark:text-white">
                 LEBOUE ELIE
               </strong>
-              , développeur web junior basé à Abidjan,
-              actuellement en{" "}
+              , développeur web junior basé à Abidjan, actuellement en{" "}
               <span className="font-semibold text-accent">
                 Licence E-administration & Transformation Digitale
               </span>{" "}
-              à l'Université Virtuelle de Côte
-              d'Ivoire. Ma mission : rendre les services publics plus
-              accessibles, transparents et efficaces grâce à la
-              technologie.
+              à l'Université Virtuelle de Côte d'Ivoire. Ma mission : rendre les
+              services publics plus accessibles, transparents et efficaces grâce
+              à la technologie.
             </p>
             <p>
               Depuis mes débuts en 2024, j'ai enchaîné les projets — du
               dashboard administratif aux plateformes e-learning — en passant
-              par la conception d'API. Je touche à tout sans être
-              spécialiste, et c'est ce qui me permet de comprendre l'ensemble
-              des maillons d'un projet. Ce qui me motive ? Voir un citoyen
-              gagner du temps sur une démarche administrative grâce à une
-              interface bien conçue.
+              par la conception d'API.Ce qui me motive ? Voir un citoyen gagner
+              du temps sur une démarche administrative grâce à une interface
+              bien conçue.
             </p>
             <p>
-              Ma méthode : du code propre, des tests rigoureux, et une
-              écoute attentive des besoins utilisateurs. Je crois que la
-              transformation digitale passe d'abord par la compréhension
-              du terrain. Chaque projet est une opportunité d'apprendre
-              et d'innover.
+              Ma méthode : du code propre, des tests rigoureux, et une écoute
+              attentive des besoins utilisateurs. Je crois que la transformation
+              digitale passe d'abord par la compréhension du terrain. Chaque
+              projet est une opportunité d'apprendre et d'innover.
             </p>
           </div>
 
