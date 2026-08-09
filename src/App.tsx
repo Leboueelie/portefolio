@@ -12,7 +12,6 @@ import Contact from "./components/Contact";
 import Preloader from "./components/Preloader";
 import Stats from "./components/Stats";
 import Services from "./components/Services";
-import Testimonials from "./components/Testimonials";
 import Interests from "./components/Interests";
 import ThreeScene from "./components/ThreeScene";
 import Lenis from "lenis";
@@ -104,7 +103,6 @@ function AppContent() {
           <Skills />
           <Stats />
           <Services />
-          <Testimonials />
           <Timeline />
           <Interests />
           <ThreeScene />
